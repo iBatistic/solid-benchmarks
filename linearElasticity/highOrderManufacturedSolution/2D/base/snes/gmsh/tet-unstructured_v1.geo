@@ -1,7 +1,7 @@
 // Gmsh .geo file to create a mesh of a cube LxLxd
 
 // Mesh spacing parameters
-Include "meshSpacing.geo";
+Include "meshSpacing/meshSpacing.geo";
 
 // Cube edge lenght
 L = 1;
@@ -26,7 +26,7 @@ Line Loop(6) = {4, 1, 2, 3};
 Plane Surface(6) = {6};
 
 // Force mapped meshing (triangles)
-Transfinite Surface {6};
+//Transfinite Surface {6};
 Mesh.Algorithm = 5;
 
 // Optional: combine triangles into quadrilaterals
