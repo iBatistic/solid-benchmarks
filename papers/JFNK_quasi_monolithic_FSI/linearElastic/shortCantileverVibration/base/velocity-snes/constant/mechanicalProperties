@@ -23,7 +23,7 @@ mechanical
 (
     steel
     {
-        type            neoHookeanElastic;
+        type            StVenantKirchhoffElastic;
         rho             rho [1 -3 0 0 0 0 0] 1450;
         E               E [1 -1 -2 0 0 0 0] 4e9;
         nu              nu [0 0 0 0 0 0 0] 0.32;
