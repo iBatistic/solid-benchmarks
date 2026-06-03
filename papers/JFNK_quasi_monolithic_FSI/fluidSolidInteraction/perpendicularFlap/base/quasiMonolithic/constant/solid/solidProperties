@@ -20,12 +20,16 @@ solidModel    linearGeometryVelocity;
 
 linearGeometryVelocityCoeffs
 {
+    predictor yes;
+
+    velocityBasedMomentumStabilisation true;
+
     stabilisation
     {
         momentum
         {
             type        diffStencilLaplacian;
-            scaleFactor 0.5;
+            scaleFactor 100;
         }
     }
 }
