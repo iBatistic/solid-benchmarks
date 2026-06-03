@@ -22,20 +22,19 @@ solidModel     linearGeometryTotalDisplacement;
 linearGeometryTotalDisplacementCoeffs
 {
     // Solution algorithm
-    //solutionAlgorithm implicitSegregated;
     solutionAlgorithm PETScSNES;
-    //solutionAlgorithm explicit;
 
-    // PETSc options file used by PETScSNES
-    optionsFile petscOptions.lu;
-    //optionsFile petscOptions.hypre;
-    //optionsFile petscOptions.ilu;
-    //optionsFile petscOptions.seg.hypre;
+    // Predictor D at the start of a new time step using U and A
+    predictor yes;
 
+    // Stabilisation
     stabilisation
     {
-        type        RhieChow;
-        scaleFactor 2;
+        momentum
+        {
+            type        diffStencilLaplacian;
+            scaleFactor 0.5;
+        }
     }
 }
 

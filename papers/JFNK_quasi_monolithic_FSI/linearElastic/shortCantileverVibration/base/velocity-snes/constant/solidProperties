@@ -21,12 +21,18 @@ solidModel    linearGeometryVelocity;
 
 linearGeometryVelocityCoeffs
 {
+    solutionAlgorithm PETScSNES
+
+    velocityBasedMomentumStabilisation true;
+
+    predictor yes;
+
     stabilisation
     {
         momentum
         {
             type        diffStencilLaplacian;
-            scaleFactor 0.5;
+            scaleFactor 5;
         }
     }
 }
