@@ -39,7 +39,9 @@ else
 fi
 
 #DEFAULT_METHODS="monolithic:default monolithic:schurTuned monolithic:physicsPC partitioned:IQNILS partitioned:Aitken"
-DEFAULT_METHODS="monolithic:default partitioned:Aitken"
+DEFAULT_METHODS="partitioned:Aitken"
+#DEFAULT_METHODS="monolithic:default"
+
 if [[ -n "${METHODS+x}" ]]
 then
     USER_SET_METHODS=true
@@ -50,8 +52,9 @@ fi
 
 case "$STUDY" in
     mesh)
-        MESH_LEVELS="${MESH_LEVELS:-1 2 3}"
-        DT_VALUES="${DT_VALUES:-0.01}"
+#        MESH_LEVELS="${MESH_LEVELS:-1 2 3}"
+        MESH_LEVELS="${MESH_LEVELS:-1}"
+        DT_VALUES="${DT_VALUES:-0.0001}"
         ;;
     time)
         MESH_LEVELS="${MESH_LEVELS:-2}"
@@ -62,11 +65,12 @@ case "$STUDY" in
         DT_VALUES="${DT_VALUES:-0.0025 0.005 0.01 0.02}"
         ;;
     targeted)
-        DT_SWEEP_METHOD="${DT_SWEEP_METHOD:-monolithic:default}"
+        DT_SWEEP_METHOD="${DT_SWEEP_METHOD:-partitioned:Aitken}"
         DT_SWEEP_MESH="${DT_SWEEP_MESH:-3}"
         METHOD_SWEEP_MESH="${METHOD_SWEEP_MESH:-4}"
         METHOD_SWEEP_DT="${METHOD_SWEEP_DT:-0.00015625}"
-        DT_VALUES="${DT_VALUES:-0.000625 0.00125 0.0025 0.005 0.01}"
+        DT_VALUES="${DT_VALUES:-0.000625}"
+#       DT_VALUES="${DT_VALUES:-0.000625 0.00125 0.0025 0.005 0.01}"
         ;;
     smoke)
         MESH_LEVELS="${MESH_LEVELS:-1}"
